@@ -101,7 +101,7 @@ namespace SistemaGestionData
         }
 
         // Metodo para la creacion de un producto vendido
-        public static void CrearProductoVendido(ProductoVendido productovendido)
+        public static void CrearProductoVendido(int IdProducto, int Stock, int IdVenta)
         {
             // Generacion de string de conexion y consulta
             string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True;";
@@ -114,16 +114,16 @@ namespace SistemaGestionData
                 // Generacion de consulta a BD
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
-                    comando.Parameters.Add(new SqlParameter("IdProducto", SqlDbType.Int) { Value = productovendido.IdProducto });
-                    comando.Parameters.Add(new SqlParameter("Stock", SqlDbType.Int) { Value = productovendido.Stock });
-                    comando.Parameters.Add(new SqlParameter("IdVenta", SqlDbType.Int) { Value = productovendido.IdVenta });
+                    comando.Parameters.Add(new SqlParameter("IdProducto", SqlDbType.Int) { Value = IdProducto });
+                    comando.Parameters.Add(new SqlParameter("Stock", SqlDbType.Int) { Value = Stock });
+                    comando.Parameters.Add(new SqlParameter("IdVenta", SqlDbType.Int) { Value = IdVenta });
                 }
                 conexion.Close();
             }
         }
 
         // Metodo para la modificacion de un producto vendido
-        public static void ModificarProductoVendido(ProductoVendido productovendido)
+        public static void ModificarProductoVendido(ProductoVendido EditedProductoVendido)
         {
             // Generacion de string de conexion y consulta
             string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True;";
@@ -136,17 +136,17 @@ namespace SistemaGestionData
                 // Generacion de consulta a BD
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
-                    comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = productovendido.Id });
-                    comando.Parameters.Add(new SqlParameter("IdProducto", SqlDbType.Int) { Value = productovendido.IdProducto });
-                    comando.Parameters.Add(new SqlParameter("Stock", SqlDbType.Int) { Value = productovendido.Stock });
-                    comando.Parameters.Add(new SqlParameter("IdVenta", SqlDbType.Int) { Value = productovendido.IdVenta });
+                    comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = EditedProductoVendido.Id });
+                    comando.Parameters.Add(new SqlParameter("IdProducto", SqlDbType.Int) { Value = EditedProductoVendido.IdProducto });
+                    comando.Parameters.Add(new SqlParameter("Stock", SqlDbType.Int) { Value = EditedProductoVendido.Stock });
+                    comando.Parameters.Add(new SqlParameter("IdVenta", SqlDbType.Int) { Value = EditedProductoVendido.IdVenta });
                 }
                 conexion.Close();
             }
         }
 
         // Metodo para la eliminacion de un producto vendido
-        public static void EliminarProductoVendido(ProductoVendido productovendido)
+        public static void EliminarProductoVendido(int Id)
         {
             // Generacion de string de conexion y consulta
             string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True;";
@@ -159,7 +159,7 @@ namespace SistemaGestionData
                 // Generacion de consulta a BD
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
-                    comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = productovendido.Id });
+                    comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = Id });
                 }
                 conexion.Close();
             }

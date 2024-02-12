@@ -30,11 +30,11 @@
         {
             SwitchUsuarios = new Button();
             SwitchProductos = new Button();
-            EliminarUsuarioBtn = new Button();
-            EditarUsuarioBtn = new Button();
-            CrearUsuarioBtn = new Button();
-            BuscarUsuarioBtn = new Button();
-            ListarUsuariosBtn = new Button();
+            EliminarVentaBtn = new Button();
+            EditarVentaBtn = new Button();
+            CrearVentaBtn = new Button();
+            BuscarVentaBtn = new Button();
+            ListarVentasBtn = new Button();
             TablaDatos = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)TablaDatos).BeginInit();
             SuspendLayout();
@@ -59,51 +59,55 @@
             SwitchProductos.UseVisualStyleBackColor = true;
             SwitchProductos.Click += SwitchProductos_Click;
             // 
-            // EliminarUsuarioBtn
+            // EliminarVentaBtn
             // 
-            EliminarUsuarioBtn.Location = new Point(650, 13);
-            EliminarUsuarioBtn.Name = "EliminarUsuarioBtn";
-            EliminarUsuarioBtn.Size = new Size(153, 41);
-            EliminarUsuarioBtn.TabIndex = 13;
-            EliminarUsuarioBtn.Text = "Eliminar Usuario";
-            EliminarUsuarioBtn.UseVisualStyleBackColor = true;
+            EliminarVentaBtn.Location = new Point(650, 13);
+            EliminarVentaBtn.Name = "EliminarVentaBtn";
+            EliminarVentaBtn.Size = new Size(153, 41);
+            EliminarVentaBtn.TabIndex = 13;
+            EliminarVentaBtn.Text = "Eliminar Venta";
+            EliminarVentaBtn.UseVisualStyleBackColor = true;
+            EliminarVentaBtn.Click += EliminarVentaBtn_Click;
             // 
-            // EditarUsuarioBtn
+            // EditarVentaBtn
             // 
-            EditarUsuarioBtn.Location = new Point(491, 13);
-            EditarUsuarioBtn.Name = "EditarUsuarioBtn";
-            EditarUsuarioBtn.Size = new Size(153, 41);
-            EditarUsuarioBtn.TabIndex = 12;
-            EditarUsuarioBtn.Text = "Editar Usuario";
-            EditarUsuarioBtn.UseVisualStyleBackColor = true;
+            EditarVentaBtn.Location = new Point(491, 13);
+            EditarVentaBtn.Name = "EditarVentaBtn";
+            EditarVentaBtn.Size = new Size(153, 41);
+            EditarVentaBtn.TabIndex = 12;
+            EditarVentaBtn.Text = "Editar Venta";
+            EditarVentaBtn.UseVisualStyleBackColor = true;
+            EditarVentaBtn.Click += EditarVentaBtn_Click;
             // 
-            // CrearUsuarioBtn
+            // CrearVentaBtn
             // 
-            CrearUsuarioBtn.Location = new Point(332, 13);
-            CrearUsuarioBtn.Name = "CrearUsuarioBtn";
-            CrearUsuarioBtn.Size = new Size(153, 41);
-            CrearUsuarioBtn.TabIndex = 11;
-            CrearUsuarioBtn.Text = "Crear Usuario";
-            CrearUsuarioBtn.UseVisualStyleBackColor = true;
+            CrearVentaBtn.Location = new Point(332, 13);
+            CrearVentaBtn.Name = "CrearVentaBtn";
+            CrearVentaBtn.Size = new Size(153, 41);
+            CrearVentaBtn.TabIndex = 11;
+            CrearVentaBtn.Text = "Crear Venta";
+            CrearVentaBtn.UseVisualStyleBackColor = true;
+            CrearVentaBtn.Click += CrearVentaBtn_Click;
             // 
-            // BuscarUsuarioBtn
+            // BuscarVentaBtn
             // 
-            BuscarUsuarioBtn.Location = new Point(173, 13);
-            BuscarUsuarioBtn.Name = "BuscarUsuarioBtn";
-            BuscarUsuarioBtn.Size = new Size(153, 41);
-            BuscarUsuarioBtn.TabIndex = 10;
-            BuscarUsuarioBtn.Text = "Buscar Usuario";
-            BuscarUsuarioBtn.UseVisualStyleBackColor = true;
+            BuscarVentaBtn.Location = new Point(173, 13);
+            BuscarVentaBtn.Name = "BuscarVentaBtn";
+            BuscarVentaBtn.Size = new Size(153, 41);
+            BuscarVentaBtn.TabIndex = 10;
+            BuscarVentaBtn.Text = "Buscar Venta";
+            BuscarVentaBtn.UseVisualStyleBackColor = true;
+            BuscarVentaBtn.Click += BuscarVentaBtn_Click;
             // 
-            // ListarUsuariosBtn
+            // ListarVentasBtn
             // 
-            ListarUsuariosBtn.Location = new Point(14, 13);
-            ListarUsuariosBtn.Name = "ListarUsuariosBtn";
-            ListarUsuariosBtn.Size = new Size(153, 41);
-            ListarUsuariosBtn.TabIndex = 9;
-            ListarUsuariosBtn.Text = "Listar Usuarios";
-            ListarUsuariosBtn.UseVisualStyleBackColor = true;
-            ListarUsuariosBtn.Click += ListarUsuariosBtn_Click;
+            ListarVentasBtn.Location = new Point(14, 13);
+            ListarVentasBtn.Name = "ListarVentasBtn";
+            ListarVentasBtn.Size = new Size(153, 41);
+            ListarVentasBtn.TabIndex = 9;
+            ListarVentasBtn.Text = "Listar Ventas";
+            ListarVentasBtn.UseVisualStyleBackColor = true;
+            ListarVentasBtn.Click += ListarVentasBtn_Click;
             // 
             // TablaDatos
             // 
@@ -127,17 +131,18 @@
             ClientSize = new Size(1022, 522);
             Controls.Add(SwitchUsuarios);
             Controls.Add(SwitchProductos);
-            Controls.Add(EliminarUsuarioBtn);
-            Controls.Add(EditarUsuarioBtn);
-            Controls.Add(CrearUsuarioBtn);
-            Controls.Add(BuscarUsuarioBtn);
-            Controls.Add(ListarUsuariosBtn);
+            Controls.Add(EliminarVentaBtn);
+            Controls.Add(EditarVentaBtn);
+            Controls.Add(CrearVentaBtn);
+            Controls.Add(BuscarVentaBtn);
+            Controls.Add(ListarVentasBtn);
             Controls.Add(TablaDatos);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "VentasForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VentasForm";
+            Load += VentasForm_Load;
             ((System.ComponentModel.ISupportInitialize)TablaDatos).EndInit();
             ResumeLayout(false);
         }
@@ -146,11 +151,11 @@
 
         private Button SwitchUsuarios;
         private Button SwitchProductos;
-        private Button EliminarUsuarioBtn;
-        private Button EditarUsuarioBtn;
-        private Button CrearUsuarioBtn;
-        private Button BuscarUsuarioBtn;
-        private Button ListarUsuariosBtn;
+        private Button EliminarVentaBtn;
+        private Button EditarVentaBtn;
+        private Button CrearVentaBtn;
+        private Button BuscarVentaBtn;
+        private Button ListarVentasBtn;
         private DataGridView TablaDatos;
     }
 }

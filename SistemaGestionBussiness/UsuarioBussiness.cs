@@ -28,13 +28,13 @@ namespace SistemaGestionBussiness
             UsuarioData.CrearUsuario(Nombre, Apellido, NombreUsuario, Contraseña, Mail);
         }
 
-        // Clase para crear un usuario
+        // Clase para editar un usuario
         public static void EditUsuario(Usuario EditedUser)
         {
             UsuarioData.ModificarUsuario(EditedUser);
         }
 
-        // Clase para crear un usuario
+        // Clase para eliminar un usuario
         public static void RemoveUsuario(int Id)
         {
             UsuarioData.EliminarUsuario(Id);

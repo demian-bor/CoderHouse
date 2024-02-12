@@ -99,7 +99,7 @@ namespace SistemaGestionData
         }
 
         // Metodo para la creacion de una venta
-        public static void CrearVenta(Venta venta)
+        public static void CrearVenta(string Comentarios, int IdUsuario)
         {
             // Generacion de string de conexion y consulta
             string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True;";
@@ -112,8 +112,8 @@ namespace SistemaGestionData
                 // Generacion de consulta a BD
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
-                    comando.Parameters.Add(new SqlParameter("Comentarios", SqlDbType.VarChar) { Value = venta.Comentarios });
-                    comando.Parameters.Add(new SqlParameter("IdUsuario", SqlDbType.Int) { Value = venta.IdUsuario });
+                    comando.Parameters.Add(new SqlParameter("Comentarios", SqlDbType.VarChar) { Value = Comentarios });
+                    comando.Parameters.Add(new SqlParameter("IdUsuario", SqlDbType.Int) { Value = IdUsuario });
                 }
                 conexion.Close();
             }
@@ -142,7 +142,7 @@ namespace SistemaGestionData
         }
 
         // Metodo para la eliminacion de una venta
-        public static void EliminarVenta(Venta venta)
+        public static void EliminarVenta(int Id)
         {
             // Generacion de string de conexion y consulta
             string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True;";
@@ -155,7 +155,7 @@ namespace SistemaGestionData
                 // Generacion de consulta a BD
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
-                    comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = venta.Id });
+                    comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = Id });
                 }
                 conexion.Close();
             }

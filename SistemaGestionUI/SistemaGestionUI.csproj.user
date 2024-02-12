@@ -19,6 +19,15 @@
     <Compile Update="DialogUsuario\DialogNuevoUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="DialogVenta\DialogBuscarVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DialogVenta\DialogEditarVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DialogVenta\DialogNuevaVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ProductosForm.cs">
       <SubType>Form</SubType>
     </Compile>

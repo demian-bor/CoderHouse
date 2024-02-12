@@ -1,10 +1,3 @@
-C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\SistemaGestion.csproj.AssemblyReference.cache
-C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\SistemaGestion.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\SistemaGestion.AssemblyInfoInputs.cache
-C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\SistemaGestion.AssemblyInfo.cs
-C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\SistemaGestion.csproj.CoreCompileInputs.cache
-C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\SistemaGestion.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\SistemaGestion.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Demian\source\repos\SistemaGestion\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\Demian\source\repos\SistemaGestion\bin\Debug\net6.0\appsettings.json
 C:\Users\Demian\source\repos\SistemaGestion\bin\Debug\net6.0\SistemaGestion.exe
@@ -57,6 +50,13 @@ C:\Users\Demian\source\repos\SistemaGestion\bin\Debug\net6.0\SistemaGestionEntit
 C:\Users\Demian\source\repos\SistemaGestion\bin\Debug\net6.0\SistemaGestionBussiness.pdb
 C:\Users\Demian\source\repos\SistemaGestion\bin\Debug\net6.0\SistemaGestionEntities.pdb
 C:\Users\Demian\source\repos\SistemaGestion\bin\Debug\net6.0\SistemaGestionData.pdb
+C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\SistemaGestion.csproj.AssemblyReference.cache
+C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\SistemaGestion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\SistemaGestion.AssemblyInfoInputs.cache
+C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\SistemaGestion.AssemblyInfo.cs
+C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\SistemaGestion.csproj.CoreCompileInputs.cache
+C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\SistemaGestion.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\SistemaGestion.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\staticwebassets\msbuild.SistemaGestion.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\staticwebassets\msbuild.build.SistemaGestion.props
 C:\Users\Demian\source\repos\SistemaGestion\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.SistemaGestion.props

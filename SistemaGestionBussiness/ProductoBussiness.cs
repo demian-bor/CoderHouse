@@ -10,31 +10,31 @@ namespace SistemaGestionBussiness
 {
     public class ProductoBussiness
     {
-        // Clase para obtener el listado de usuarios
+        // Clase para obtener el listado de productos
         public static List<Producto> GetProductos()
         {
             return ProductoData.ListarProductos();
         }
 
-        // Clase para obtener un usuario
+        // Clase para obtener un productos
         public static List<Producto> GetProducto(int Id)
         {
             return ProductoData.ObtenerProducto(Id);
         }
 
-        // Clase para crear un usuario
+        // Clase para crear un productos
         public static void NewProducto(string Descripcion, double Costo, double PrecioVenta, int Stock, int IdUsuario)
         {
             ProductoData.CrearProducto(Descripcion, Costo, PrecioVenta, Stock, IdUsuario);
         }
 
-        // Clase para crear un usuario
+        // Clase para editar un productos
         public static void EditProducto(Producto EditedProducto)
         {
             ProductoData.ModificarProducto(EditedProducto);
         }
 
-        // Clase para crear un usuario
+        // Clase para eliminar un productos
         public static void RemoveProducto(int Id)
         {
             ProductoData.EliminarProducto(Id);

@@ -45,7 +45,7 @@ namespace SistemaGestionUI.DialogProducto
         private void DialogEditarProducto_Load(object sender, EventArgs e)
         {
             // Obtener el listado de Productos
-            var lista = ProductoBussiness.GetProductos();
+            var lista = UsuarioBussiness.GetUsuarios();
 
             // Setear como minimo y maximo del rango
             IdUsuario.Minimum = lista.FirstOrDefault().Id;
