@@ -1,0 +1,15 @@
+C:\Users\Demian\source\repos\SistemaGestionData\bin\Debug\net6.0\SistemaGestionData.deps.json
+C:\Users\Demian\source\repos\SistemaGestionData\bin\Debug\net6.0\SistemaGestionData.dll
+C:\Users\Demian\source\repos\SistemaGestionData\bin\Debug\net6.0\SistemaGestionData.pdb
+C:\Users\Demian\source\repos\SistemaGestionData\bin\Debug\net6.0\SistemaGestionEntities.dll
+C:\Users\Demian\source\repos\SistemaGestionData\bin\Debug\net6.0\SistemaGestionEntities.pdb
+C:\Users\Demian\source\repos\SistemaGestionData\obj\Debug\net6.0\SistemaGestionData.csproj.AssemblyReference.cache
+C:\Users\Demian\source\repos\SistemaGestionData\obj\Debug\net6.0\SistemaGestionData.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Demian\source\repos\SistemaGestionData\obj\Debug\net6.0\SistemaGestionData.AssemblyInfoInputs.cache
+C:\Users\Demian\source\repos\SistemaGestionData\obj\Debug\net6.0\SistemaGestionData.AssemblyInfo.cs
+C:\Users\Demian\source\repos\SistemaGestionData\obj\Debug\net6.0\SistemaGestionData.csproj.CoreCompileInputs.cache
+C:\Users\Demian\source\repos\SistemaGestionData\obj\Debug\net6.0\SistemaGestionData.csproj.CopyComplete
+C:\Users\Demian\source\repos\SistemaGestionData\obj\Debug\net6.0\SistemaGestionData.dll
+C:\Users\Demian\source\repos\SistemaGestionData\obj\Debug\net6.0\refint\SistemaGestionData.dll
+C:\Users\Demian\source\repos\SistemaGestionData\obj\Debug\net6.0\SistemaGestionData.pdb
+C:\Users\Demian\source\repos\SistemaGestionData\obj\Debug\net6.0\ref\SistemaGestionData.dll

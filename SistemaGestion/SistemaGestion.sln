@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestion", "SistemaGestion.csproj", "{2991C272-C89A-4D57-A64F-FEB453C95D9F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{97837CAE-A0A9-4A62-8D8C-030F6542077E} = {97837CAE-A0A9-4A62-8D8C-030F6542077E}
+		{CF362C48-2C03-4460-9DA7-68C2B71B7262} = {CF362C48-2C03-4460-9DA7-68C2B71B7262}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionBussiness", "..\SistemaGestionBussiness\SistemaGestionBussiness.csproj", "{97837CAE-A0A9-4A62-8D8C-030F6542077E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2403AE0D-2948-4690-9888-468552A3A738} = {2403AE0D-2948-4690-9888-468552A3A738}
+		{CF362C48-2C03-4460-9DA7-68C2B71B7262} = {CF362C48-2C03-4460-9DA7-68C2B71B7262}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionData", "..\SistemaGestionData\SistemaGestionData.csproj", "{2403AE0D-2948-4690-9888-468552A3A738}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CF362C48-2C03-4460-9DA7-68C2B71B7262} = {CF362C48-2C03-4460-9DA7-68C2B71B7262}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionEntities", "..\SistemaGestionEntities\SistemaGestionEntities.csproj", "{CF362C48-2C03-4460-9DA7-68C2B71B7262}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGestionUI", "..\SistemaGestionUI\SistemaGestionUI.csproj", "{21AD49D0-1E71-447C-9D5D-51B9EE2C9E97}"
+	ProjectSection(ProjectDependencies) = postProject
+		{97837CAE-A0A9-4A62-8D8C-030F6542077E} = {97837CAE-A0A9-4A62-8D8C-030F6542077E}
+		{CF362C48-2C03-4460-9DA7-68C2B71B7262} = {CF362C48-2C03-4460-9DA7-68C2B71B7262}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2991C272-C89A-4D57-A64F-FEB453C95D9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2991C272-C89A-4D57-A64F-FEB453C95D9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2991C272-C89A-4D57-A64F-FEB453C95D9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2991C272-C89A-4D57-A64F-FEB453C95D9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97837CAE-A0A9-4A62-8D8C-030F6542077E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97837CAE-A0A9-4A62-8D8C-030F6542077E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97837CAE-A0A9-4A62-8D8C-030F6542077E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97837CAE-A0A9-4A62-8D8C-030F6542077E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2403AE0D-2948-4690-9888-468552A3A738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2403AE0D-2948-4690-9888-468552A3A738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2403AE0D-2948-4690-9888-468552A3A738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2403AE0D-2948-4690-9888-468552A3A738}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF362C48-2C03-4460-9DA7-68C2B71B7262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF362C48-2C03-4460-9DA7-68C2B71B7262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF362C48-2C03-4460-9DA7-68C2B71B7262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF362C48-2C03-4460-9DA7-68C2B71B7262}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21AD49D0-1E71-447C-9D5D-51B9EE2C9E97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21AD49D0-1E71-447C-9D5D-51B9EE2C9E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21AD49D0-1E71-447C-9D5D-51B9EE2C9E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21AD49D0-1E71-447C-9D5D-51B9EE2C9E97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AEEE608C-44B9-4400-BFCA-970439EAA4D6}
+	EndGlobalSection
+EndGlobal

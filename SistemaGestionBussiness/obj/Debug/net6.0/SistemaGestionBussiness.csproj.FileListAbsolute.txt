@@ -1,0 +1,17 @@
+C:\Users\Demian\source\repos\SistemaGestionBussiness\bin\Debug\net6.0\SistemaGestionBussiness.deps.json
+C:\Users\Demian\source\repos\SistemaGestionBussiness\bin\Debug\net6.0\SistemaGestionBussiness.dll
+C:\Users\Demian\source\repos\SistemaGestionBussiness\bin\Debug\net6.0\SistemaGestionBussiness.pdb
+C:\Users\Demian\source\repos\SistemaGestionBussiness\bin\Debug\net6.0\SistemaGestionData.dll
+C:\Users\Demian\source\repos\SistemaGestionBussiness\bin\Debug\net6.0\SistemaGestionEntities.dll
+C:\Users\Demian\source\repos\SistemaGestionBussiness\bin\Debug\net6.0\SistemaGestionData.pdb
+C:\Users\Demian\source\repos\SistemaGestionBussiness\bin\Debug\net6.0\SistemaGestionEntities.pdb
+C:\Users\Demian\source\repos\SistemaGestionBussiness\obj\Debug\net6.0\SistemaGestionBussiness.csproj.AssemblyReference.cache
+C:\Users\Demian\source\repos\SistemaGestionBussiness\obj\Debug\net6.0\SistemaGestionBussiness.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Demian\source\repos\SistemaGestionBussiness\obj\Debug\net6.0\SistemaGestionBussiness.AssemblyInfoInputs.cache
+C:\Users\Demian\source\repos\SistemaGestionBussiness\obj\Debug\net6.0\SistemaGestionBussiness.AssemblyInfo.cs
+C:\Users\Demian\source\repos\SistemaGestionBussiness\obj\Debug\net6.0\SistemaGestionBussiness.csproj.CoreCompileInputs.cache
+C:\Users\Demian\source\repos\SistemaGestionBussiness\obj\Debug\net6.0\SistemaGestionBussiness.csproj.CopyComplete
+C:\Users\Demian\source\repos\SistemaGestionBussiness\obj\Debug\net6.0\SistemaGestionBussiness.dll
+C:\Users\Demian\source\repos\SistemaGestionBussiness\obj\Debug\net6.0\refint\SistemaGestionBussiness.dll
+C:\Users\Demian\source\repos\SistemaGestionBussiness\obj\Debug\net6.0\SistemaGestionBussiness.pdb
+C:\Users\Demian\source\repos\SistemaGestionBussiness\obj\Debug\net6.0\ref\SistemaGestionBussiness.dll
