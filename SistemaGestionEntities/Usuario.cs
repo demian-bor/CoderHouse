@@ -8,23 +8,42 @@ namespace SistemaGestionEntities
 {
     public class Usuario
     {
-        // Declaracion de propiedades
-        public int Id;
-        public string Nombre;
-        public string Apellido;
-        public string NombreUsuario;
-        public string Contraseña;
-        public string Mail;
+        // Declaracion de propiedades privadas
+        private int _Id;
+        private string _Nombre;
+        private string _Apellido;
+        private string _NombreUsuario;
+        private string _Contraseña;
+        private string _Mail;
+
+        // Declaracion de metodos de acceso publicos
+        public int Id { get => _Id; set => _Id = value; }
+        public string Nombre { get => _Nombre; set => _Nombre = value; }
+        public string Apellido { get => _Apellido; set => _Apellido = value; }
+        public string NombreUsuario { get => _NombreUsuario; set => _NombreUsuario = value; }
+        public string Contraseña { get => _Contraseña; set => _Contraseña = value; }
+        public string Mail { get => _Mail; set => _Mail = value; }
 
         // Funcion de constructor con parametros
         public Usuario(int Id, string Nombre, string Apellido, string NombreUsuario, string Contraseña, string Mail)
         {
-            this.Id = Id;
-            this.Nombre = Nombre;
-            this.Apellido = Apellido;
-            this.NombreUsuario = NombreUsuario;
-            this.Contraseña = Contraseña;
-            this.Mail = Mail;
+            _Id = Id;
+            _Nombre = Nombre;
+            _Apellido = Apellido;
+            _NombreUsuario = NombreUsuario;
+            _Contraseña = Contraseña;
+            _Mail = Mail;
+        }
+
+        // Funcion de constructor sin parametros
+        public Usuario()
+        {
+            _Id = 0;
+            _Nombre = string.Empty;
+            _Apellido = string.Empty;
+            _NombreUsuario = string.Empty;
+            _Contraseña = string.Empty;
+            _Mail = string.Empty;
         }
     }
 }

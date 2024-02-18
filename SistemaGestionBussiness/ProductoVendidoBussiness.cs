@@ -17,7 +17,7 @@ namespace SistemaGestionBussiness
         }
 
         // Clase para obtener un producto vendido
-        public static List<ProductoVendido> GetProductoVendido(int Id)
+        public static ProductoVendido GetProductoVendido(int Id)
         {
             return ProductoVendidoData.ObtenerProductoVendido(Id);
         }

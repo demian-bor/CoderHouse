@@ -13,27 +13,31 @@ namespace SistemaGestion.Controllers
     [Route("api/[controller]")]
     public class UsuarioController : Controller
     {
-        [HttpGet("listado")]
-        public IEnumerable<Usuario> GetAll()
+        // Iniciar sesion
+        [HttpGet("{nombreUsuario}/{contraseña}")]
+        public ActionResult<Usuario> UserLoginCheck(string nombreUsuario, string contraseña)
         {
-            return UsuarioBussiness.GetUsuarios();
+            // Buscar usuario y devolver
+            var users = UsuarioBussiness.GetUsuarios().Where(Item => Item.NombreUsuario == nombreUsuario);
+            if (users.Count() > 0 && users.First().Id != 0)
+            {
+                if (users.FirstOrDefault().Contraseña == contraseña)
+                {
+                    return Ok(users);
+                }
+                else
+                {
+                    return BadRequest("Acceso denegado");
+                }
+            }
+            else
+            {
+                return NotFound("Usuario inexistente");
+            }
         }
 
-        [HttpGet("ver/{id}")]
-        public ActionResult<Usuario> GetById(int id)
-        {
-            try
-            {
-                return UsuarioBussiness.GetUsuario(id).FirstOrDefault();
-            }
-            catch
-            {
-                return BadRequest("Id de usuario inexistente");
-            }
-        }
-
-        // api/Usuario/crear?Nombre=&Apellido=&NombreUsuario=&Contrase%C3%B1a=&Mail=
-        [HttpGet("crear")]
+        // Crear un usuario
+        [HttpPost()]
         public ActionResult<String> Create(string Nombre, string Apellido, string NombreUsuario, string Contraseña, string Mail)
         {
             try
@@ -47,16 +51,13 @@ namespace SistemaGestion.Controllers
             }
         }
 
-        // api/Usuario/editar?Id=&Nombre=&Apellido=&NombreUsuario=&Contrase%C3%B1a=&Mail=
-        [HttpGet("editar")]
+        // Modificar un usuario
+        [HttpPut()]
         public ActionResult<String> Edit(int Id, string Nombre, string Apellido, string NombreUsuario, string Contraseña, string Mail)
         {
-            // Verificar la existencia del usuario
-            try
-            {
-                UsuarioBussiness.GetUsuario(Id);
-            }
-            catch
+            // Corroborar existencia de usuario
+            var users = UsuarioBussiness.GetUsuario(Id);
+            if (users.Id == 0)
             {
                 return BadRequest("Id de usuario inexistente");
             }
@@ -76,15 +77,29 @@ namespace SistemaGestion.Controllers
             }
         }
 
-        [HttpGet("eliminar/{Id}")]
+        // Treer un usuario
+        [HttpGet("{nombreUsuario}")]
+        public ActionResult<Usuario> GetById(string nombreUsuario)
+        {
+            // Buscar usuario y devolver
+            var users = UsuarioBussiness.GetUsuarios().Where(Item => Item.NombreUsuario == nombreUsuario);
+            if (users.Count() > 0 && users.First().Id != 0)
+            {
+                return Ok(users);
+            }
+            else
+            {
+                return NotFound("Usuario inexistente");
+            }
+        }
+
+        // Eliminar un usuario
+        [HttpDelete("{Id}")]
         public ActionResult<String> Remove(int Id)
         {
-            // Verificar la existencia del usuario
-            try
-            {
-                UsuarioBussiness.GetUsuario(Id);
-            }
-            catch
+            // Corroborar existencia de usuario
+            var users = UsuarioBussiness.GetUsuario(Id);
+            if (users.Id == 0)
             {
                 return BadRequest("Id de usuario inexistente");
             }
@@ -99,7 +114,14 @@ namespace SistemaGestion.Controllers
             {
                 return BadRequest("Ocurrio un error");
             }
-            
+
         }
+
+        // Listar usuarios (no solicitado)
+        // [HttpGet("listado")]
+        // public IEnumerable<Usuario> GetAll()
+        // {
+        //    return UsuarioBussiness.GetUsuarios();
+        // }
     }
 }

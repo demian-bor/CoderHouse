@@ -18,7 +18,7 @@ namespace SistemaGestionBussiness
         }
 
         // Clase para obtener una venta
-        public static List<Venta> GetVenta(int Id)
+        public static Venta GetVenta(int Id)
         {
             return VentaData.ObtenerVenta(Id);
         }

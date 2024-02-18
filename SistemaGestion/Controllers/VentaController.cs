@@ -8,80 +8,44 @@ namespace SistemaGestion.Controllers
     [Route("api/[controller]")]
     public class VentaController : Controller
     {
-        [HttpGet("listado")]
-        public IEnumerable<Venta> GetAll()
+        // Obtener ventas de un usuario
+        [HttpGet("{idUsuario}")]
+        public ActionResult<IEnumerable<Venta>> GetAll(int idUsuario)
         {
-            return VentaBussiness.GetVentas();
-        }
-
-        [HttpGet("ver/{id}")]
-        public ActionResult<Venta> GetById(int id)
-        {
-            try
-            {
-                return VentaBussiness.GetVenta(id).FirstOrDefault();
-            }
-            catch
-            {
-                return BadRequest("Id de venta inexistente");
-            }
-        }
-
-        [HttpGet("crear")]
-        public ActionResult<String> Create(string Comentarios, int IdUsuario)
-        {
-            // Verificar que exista el usuario
-            try
-            {
-                UsuarioBussiness.GetUsuario(IdUsuario);
-            }
-            catch
+            // Corroborar existencia de usuario
+            var users = UsuarioBussiness.GetUsuario(idUsuario);
+            if (users.Id == 0)
             {
                 return BadRequest("Id de usuario inexistente");
             }
 
-            // Crear la nueva venta
-            try
+            // Buscar ventas asociadas y devolver
+            var ventas = VentaBussiness.GetVentas().Where(Item => Item.IdUsuario == idUsuario);
+            if (ventas.Count() > 0 && ventas.First().Id != 0)
             {
-                VentaBussiness.NewVenta(Comentarios, IdUsuario);
-                return Ok();
+                return Ok(ventas);
             }
-            catch
+            else
             {
-                return BadRequest("Ocurrio un error");
+                return NotFound("No se encontraron ventas asociadas al usuario");
             }
         }
 
-        [HttpGet("editar")]
-        public ActionResult<String> Edit(int Id, string Comentarios, int IdUsuario)
+        // Crear una venta
+        [HttpPost("{idUsuario}")]
+        public ActionResult<String> Create(string Comentarios, int idUsuario)
         {
-            // Verificar la existencia de la venta
-            try
-            {
-                VentaBussiness.GetVenta(Id);
-            }
-            catch
-            {
-                return BadRequest("Id de venta inexistente");
-            }
-
-            // Verificar la existencia del usuario
-            try
-            {
-                UsuarioBussiness.GetUsuario(IdUsuario);
-            }
-            catch
+            // Corroborar existencia de usuario
+            var users = UsuarioBussiness.GetUsuario(idUsuario);
+            if (users.Id == 0)
             {
                 return BadRequest("Id de usuario inexistente");
             }
 
-            // Generar el usuario editado
-            Venta EditedVenta = new Venta(Id, Comentarios, IdUsuario);
-
-            // Realizar edicion
+            // Generar venta
             try
             {
-                VentaBussiness.EditVenta(EditedVenta);
+                VentaBussiness.NewVenta(Comentarios, idUsuario);
                 return Ok();
             }
             catch
@@ -90,30 +54,83 @@ namespace SistemaGestion.Controllers
             }
         }
 
-        [HttpGet("eliminar/{Id}")]
-        public ActionResult<String> Remove(int Id)
-        {
-            // Verificar la existencia de la venta
-            try
-            {
-                VentaBussiness.GetVenta(Id);
-            }
-            catch
-            {
-                return BadRequest("Id de venta inexistente");
-            }
 
-            // Realizar eliminacion
-            try
-            {
-                VentaBussiness.RemoveVenta(Id);
-                return Ok();
-            }
-            catch
-            {
-                return BadRequest("Ocurrio un error");
-            }
+        // Hacia abajo no fue solicitado
+        //[HttpGet("ver/{id}")]
+        //public ActionResult<Venta> GetById(int id)
+        //{
+        //    try
+        //    {
+        //        return VentaBussiness.GetVenta(id);
+        //    }
+        //    catch
+        //    {
+        //        return BadRequest("Id de venta inexistente");
+        //    }
+        //}
 
-        }
+        //[HttpGet("editar")]
+        //public ActionResult<String> Edit(int Id, string Comentarios, int IdUsuario)
+        //{
+        //    // Verificar la existencia de la venta
+        //    try
+        //    {
+        //        VentaBussiness.GetVenta(Id);
+        //    }
+        //    catch
+        //    {
+        //        return BadRequest("Id de venta inexistente");
+        //    }
+
+        //    // Verificar la existencia del usuario
+        //    try
+        //    {
+        //        UsuarioBussiness.GetUsuario(IdUsuario);
+        //    }
+        //    catch
+        //    {
+        //        return BadRequest("Id de usuario inexistente");
+        //    }
+
+        //    // Generar el usuario editado
+        //    Venta EditedVenta = new Venta(Id, Comentarios, IdUsuario);
+
+        //    // Realizar edicion
+        //    try
+        //    {
+        //        VentaBussiness.EditVenta(EditedVenta);
+        //        return Ok();
+        //    }
+        //    catch
+        //    {
+        //        return BadRequest("Ocurrio un error");
+        //    }
+        //}
+
+        //[HttpGet("eliminar/{Id}")]
+        //public ActionResult<String> Remove(int Id)
+        //{
+        //    // Verificar la existencia de la venta
+        //    try
+        //    {
+        //        VentaBussiness.GetVenta(Id);
+        //    }
+        //    catch
+        //    {
+        //        return BadRequest("Id de venta inexistente");
+        //    }
+
+        //    // Realizar eliminacion
+        //    try
+        //    {
+        //        VentaBussiness.RemoveVenta(Id);
+        //        return Ok();
+        //    }
+        //    catch
+        //    {
+        //        return BadRequest("Ocurrio un error");
+        //    }
+
+        //}
     }
 }

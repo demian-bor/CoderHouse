@@ -107,11 +107,7 @@ namespace SistemaGestionUI
             TablaDatos.Columns.Add("PrecioVenta", "PrecioVenta");
             TablaDatos.Columns.Add("Stock", "Stock");
             TablaDatos.Columns.Add("IdUsuario", "IdUsuario");
-            foreach (var item in lista)
-            {
-                TablaDatos.Rows.Add(item.Id, item.Descripcion, item.Costo, item.PrecioVenta, item.Stock, item.IdUsuario);
-            }
-            TablaDatos.AutoResizeColumns();
+            TablaDatos.Rows.Add(lista.Id, lista.Descripcion, lista.Costo, lista.PrecioVenta, lista.Stock, lista.IdUsuario);
             TablaDatos.AutoResizeColumns();
         }
 

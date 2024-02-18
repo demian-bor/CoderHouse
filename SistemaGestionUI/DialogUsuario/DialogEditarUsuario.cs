@@ -46,14 +46,14 @@ namespace SistemaGestionUI
         private void DialogEditarUsuario_Load(object sender, EventArgs e)
         {
             // Obtener el listado de usuarios
-            List<Usuario> EditUser = UsuarioBussiness.GetUsuario(UsuariosForm.ID_Usuario_Busqueda);
+            Usuario EditUser = UsuarioBussiness.GetUsuario(UsuariosForm.ID_Usuario_Busqueda);
 
             // Completar los campos de edicion
-            NombreInput.Text = EditUser.FirstOrDefault().Nombre;
-            ApellidoInput.Text = EditUser.FirstOrDefault().Apellido;
-            UsuarioInput.Text = EditUser.FirstOrDefault().NombreUsuario;
-            ContrasenaInput.Text = EditUser.FirstOrDefault().Contraseña;
-            CorreoInput.Text = EditUser.FirstOrDefault().Mail;
+            NombreInput.Text = EditUser.Nombre;
+            ApellidoInput.Text = EditUser.Apellido;
+            UsuarioInput.Text = EditUser.NombreUsuario;
+            ContrasenaInput.Text = EditUser.Contraseña;
+            CorreoInput.Text = EditUser.Mail;
         }
     }
 }

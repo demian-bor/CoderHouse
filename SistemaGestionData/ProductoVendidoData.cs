@@ -12,15 +12,14 @@ namespace SistemaGestionData
     public class ProductoVendidoData
     {
         // Metodo para la obtencion de un producto vendido
-        public static List<ProductoVendido> ObtenerProductoVendido(int IdProducto)
+        public static ProductoVendido ObtenerProductoVendido(int IdProducto)
         {
-            // Generacion de lista, string de conexion y consulta
-            List<ProductoVendido> lista = new List<ProductoVendido>();
-            string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True;";
+            // Generacion de productovendido y consulta
+            ProductoVendido productovendido = new ProductoVendido();
             var query = "SELECT Id, IdProducto, Stock, IdVenta FROM ProductoVendido WHERE IdProducto=@IdProducto;";
 
             // Conexion a la BD
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlConnection conexion = new DB_Connection().NewConnection())
             {
                 conexion.Open();
                 // Generacion de consulta a BD
@@ -42,33 +41,28 @@ namespace SistemaGestionData
                             // Recorrer el resultado de la consulta almacenando en lista
                             while (dr.Read())
                             {
-                                var productovendido = new ProductoVendido(
-                                        Convert.ToInt32(dr["Id"]),
-                                        Convert.ToInt32(dr["IdProducto"]),
-                                        Convert.ToInt32(dr["Stock"]),
-                                        Convert.ToInt32(dr["IdVenta"])
-                                    );
-                                lista.Add(productovendido);
+                                productovendido.Id = Convert.ToInt32(dr["Id"]);
+                                productovendido.IdProducto = Convert.ToInt32(dr["IdProducto"]);
+                                productovendido.Stock = Convert.ToInt32(dr["Stock"]);
+                                productovendido.IdVenta = Convert.ToInt32(dr["IdVenta"]);
                             }
                         }
                     }
                 }
-                conexion.Close();
             }
-            // Devolver la lista generada
-            return lista;
+            // Devolver el productovendido generado
+            return productovendido;
         }
 
         // Metodo para la obtencion de todos los productos vendidos
         public static List<ProductoVendido> ListarProductosVendidos()
         {
-            // Generacion de lista, string de conexion y consulta
+            // Generacion de lista y consulta
             List<ProductoVendido> lista = new List<ProductoVendido>();
-            string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True;";
             var query = "SELECT Id, IdProducto, Stock, IdVenta FROM ProductoVendido;";
 
             // Conexion a la BD
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlConnection conexion = new DB_Connection().NewConnection())
             {
                 conexion.Open();
                 // Generacion de consulta a BD
@@ -94,7 +88,6 @@ namespace SistemaGestionData
                         }
                     }
                 }
-                conexion.Close();
             }
             // Devolver la lista generada
             return lista;
@@ -103,12 +96,11 @@ namespace SistemaGestionData
         // Metodo para la creacion de un producto vendido
         public static void CrearProductoVendido(int IdProducto, int Stock, int IdVenta)
         {
-            // Generacion de string de conexion y consulta
-            string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True;";
+            // Generacion de consulta
             var query = "INSERT INTO ProductoVendido (IdProducto, Stock, IdVenta) VALUES (@IdProducto, @Stock, @IdVenta)";
 
             // Conexion a la BD
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlConnection conexion = new DB_Connection().NewConnection())
             {
                 conexion.Open();
                 // Generacion de consulta a BD
@@ -118,19 +110,17 @@ namespace SistemaGestionData
                     comando.Parameters.Add(new SqlParameter("Stock", SqlDbType.Int) { Value = Stock });
                     comando.Parameters.Add(new SqlParameter("IdVenta", SqlDbType.Int) { Value = IdVenta });
                 }
-                conexion.Close();
             }
         }
 
         // Metodo para la modificacion de un producto vendido
         public static void ModificarProductoVendido(ProductoVendido EditedProductoVendido)
         {
-            // Generacion de string de conexion y consulta
-            string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True;";
+            // Generacion de consulta
             var query = "UPDATE ProductoVendido SET IdProducto = @IdProducto, Stock = @Stock, IdVenta = @IdVenta WHERE Id = @Id";
 
             // Conexion a la BD
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlConnection conexion = new DB_Connection().NewConnection())
             {
                 conexion.Open();
                 // Generacion de consulta a BD
@@ -141,19 +131,17 @@ namespace SistemaGestionData
                     comando.Parameters.Add(new SqlParameter("Stock", SqlDbType.Int) { Value = EditedProductoVendido.Stock });
                     comando.Parameters.Add(new SqlParameter("IdVenta", SqlDbType.Int) { Value = EditedProductoVendido.IdVenta });
                 }
-                conexion.Close();
             }
         }
 
         // Metodo para la eliminacion de un producto vendido
         public static void EliminarProductoVendido(int Id)
         {
-            // Generacion de string de conexion y consulta
-            string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True;";
+            // Generacion de consulta
             var query = "DELETE FROM ProductoVendido WHERE Id = @Id";
 
             // Conexion a la BD
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlConnection conexion = new DB_Connection().NewConnection())
             {
                 conexion.Open();
                 // Generacion de consulta a BD
@@ -161,7 +149,6 @@ namespace SistemaGestionData
                 {
                     comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = Id });
                 }
-                conexion.Close();
             }
         }
     }

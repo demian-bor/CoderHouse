@@ -17,7 +17,7 @@ namespace SistemaGestionBussiness
         }
 
         // Clase para obtener un usuario
-        public static List<Usuario> GetUsuario(int Id)
+        public static Usuario GetUsuario(int Id)
         {
             return UsuarioData.ObtenerUsuario(Id);
         }

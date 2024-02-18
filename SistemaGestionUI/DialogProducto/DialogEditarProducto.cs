@@ -52,14 +52,14 @@ namespace SistemaGestionUI.DialogProducto
             IdUsuario.Maximum = lista.LastOrDefault().Id;
 
             // Obtener el listado de usuarios
-            List<Producto> EditProduct = ProductoBussiness.GetProducto(ProductosForm.ID_Producto_Busqueda);
+            Producto EditProduct = ProductoBussiness.GetProducto(ProductosForm.ID_Producto_Busqueda);
 
             // Completar los campos de edicion
-            Descripcion.Text = EditProduct.FirstOrDefault().Descripcion.ToString();
-            Costo.Value = ((decimal)EditProduct.FirstOrDefault().Costo);
-            PrecioVenta.Value = ((decimal)EditProduct.FirstOrDefault().PrecioVenta);
-            Stock.Value = EditProduct.FirstOrDefault().Stock;
-            IdUsuario.Value = EditProduct.FirstOrDefault().IdUsuario;
+            Descripcion.Text = EditProduct.Descripcion.ToString();
+            Costo.Value = ((decimal)EditProduct.Costo);
+            PrecioVenta.Value = ((decimal)EditProduct.PrecioVenta);
+            Stock.Value = EditProduct.Stock;
+            IdUsuario.Value = EditProduct.IdUsuario;
         }
     }
 }

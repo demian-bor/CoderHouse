@@ -10,14 +10,14 @@
         "projectUniqueName": "C:\\Users\\Demian\\source\\repos\\SistemaGestionBussiness\\SistemaGestionBussiness.csproj",
         "projectName": "SistemaGestionBussiness",
         "projectPath": "C:\\Users\\Demian\\source\\repos\\SistemaGestionBussiness\\SistemaGestionBussiness.csproj",
-        "packagesPath": "C:\\Users\\i36107818\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Demian\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Demian\\source\\repos\\SistemaGestionBussiness\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\i36107818\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Demian\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -82,14 +82,14 @@
         "projectUniqueName": "C:\\Users\\Demian\\source\\repos\\SistemaGestionData\\SistemaGestionData.csproj",
         "projectName": "SistemaGestionData",
         "projectPath": "C:\\Users\\Demian\\source\\repos\\SistemaGestionData\\SistemaGestionData.csproj",
-        "packagesPath": "C:\\Users\\i36107818\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Demian\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Demian\\source\\repos\\SistemaGestionData\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\i36107818\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Demian\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -151,14 +151,14 @@
         "projectUniqueName": "C:\\Users\\Demian\\source\\repos\\SistemaGestionEntities\\SistemaGestionEntities.csproj",
         "projectName": "SistemaGestionEntities",
         "projectPath": "C:\\Users\\Demian\\source\\repos\\SistemaGestionEntities\\SistemaGestionEntities.csproj",
-        "packagesPath": "C:\\Users\\i36107818\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Demian\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Demian\\source\\repos\\SistemaGestionEntities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\i36107818\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Demian\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -216,14 +216,14 @@
         "projectUniqueName": "C:\\Users\\Demian\\source\\repos\\SistemaGestion\\SistemaGestion.csproj",
         "projectName": "SistemaGestion",
         "projectPath": "C:\\Users\\Demian\\source\\repos\\SistemaGestion\\SistemaGestion.csproj",
-        "packagesPath": "C:\\Users\\i36107818\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Demian\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Demian\\source\\repos\\SistemaGestion\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\i36107818\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Demian\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

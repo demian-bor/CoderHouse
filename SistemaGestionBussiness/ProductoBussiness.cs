@@ -17,7 +17,7 @@ namespace SistemaGestionBussiness
         }
 
         // Clase para obtener un productos
-        public static List<Producto> GetProducto(int Id)
+        public static Producto GetProducto(int Id)
         {
             return ProductoData.ObtenerProducto(Id);
         }

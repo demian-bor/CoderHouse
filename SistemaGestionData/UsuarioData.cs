@@ -12,15 +12,17 @@ namespace SistemaGestionData
     public class UsuarioData
     {
         // Metodo para la obtencion de un usuario
-        public static List<Usuario> ObtenerUsuario(int IdUsuario)
+        public static Usuario ObtenerUsuario(int IdUsuario)
         {
-            // Generacion de lista, string de conexion y consulta
-            List<Usuario> lista = new List<Usuario>();
-            string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True; TrustServerCertificate=True";
-            var query = "SELECT Id, Nombre, Apellido, NombreUsuario, \"Contrase a\", Mail FROM Usuario WHERE Id=@IdUsuario;";
+            // El SQL importa como \"Contrase a\" se reemplaza en BD y script por pedido del profe
+            // quizas lo prueban con ñ . En los Data reader iba como "Contrase a"
+
+            // Generacion de usuario y consulta
+            Usuario usuario = new Usuario();
+            var query = "SELECT Id, Nombre, Apellido, NombreUsuario, Contraseña, Mail FROM Usuario WHERE Id=@IdUsuario;";
 
             // Conexion a la BD
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlConnection conexion = new DB_Connection().NewConnection())
             {
                 conexion.Open();
                 // Generacion de consulta a BD
@@ -39,38 +41,33 @@ namespace SistemaGestionData
                         // Continuar si la consulta nos devolvio datos
                         if (dr.HasRows)
                         {
-                            // Recorrer el resultado de la consulta almacenando en lista
+                            // Recorrer el resultado de la consulta almacenando en usuario
                             while (dr.Read())
                             {
-                                var usuario = new Usuario(
-                                        Convert.ToInt32(dr["Id"]),
-                                        dr["Nombre"].ToString(),
-                                        dr["Apellido"].ToString(),
-                                        dr["NombreUsuario"].ToString(),
-                                        dr["Contrase a"].ToString(),
-                                        dr["Mail"].ToString()
-                                    );
-                                lista.Add(usuario);
+                                usuario.Id = Convert.ToInt32(dr["Id"]);
+                                usuario.Nombre = dr["Nombre"].ToString();
+                                usuario.Apellido = dr["Apellido"].ToString();
+                                usuario.NombreUsuario = dr["NombreUsuario"].ToString();
+                                usuario.Contraseña = dr["Contraseña"].ToString();
+                                usuario.Mail = dr["Mail"].ToString();
                             }
                         }
                     }
                 }
-                conexion.Close();
             }
-            // Devolver la lista generada
-            return lista;
+            // Devolver el usuario generado
+            return usuario;
         }
 
         // Metodo para la obtencion de todos los usuarios
         public static List<Usuario> ListarUsuarios()
         {
-            // Generacion de lista, string de conexion y consulta
+            // Generacion de lista y consulta
             List<Usuario> lista = new List<Usuario>();
-            string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True; TrustServerCertificate=True";
-            var query = "SELECT Id, Nombre, Apellido, NombreUsuario, \"Contrase a\", Mail FROM Usuario;";
+            var query = "SELECT Id, Nombre, Apellido, NombreUsuario, Contraseña, Mail FROM Usuario;";
 
             // Conexion a la BD
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlConnection conexion = new DB_Connection().NewConnection())
             {
                 conexion.Open();
                 // Generacion de consulta a BD
@@ -90,7 +87,7 @@ namespace SistemaGestionData
                                         dr["Nombre"].ToString(),
                                         dr["Apellido"].ToString(),
                                         dr["NombreUsuario"].ToString(),
-                                        dr["Contrase a"].ToString(),
+                                        dr["Contraseña"].ToString(),
                                         dr["Mail"].ToString()
                                     );
                                 lista.Add(usuario);
@@ -98,7 +95,6 @@ namespace SistemaGestionData
                         }
                     }
                 }
-                conexion.Close();
             }
             // Devolver la lista generada
             return lista;
@@ -107,12 +103,11 @@ namespace SistemaGestionData
         // Metodo para la creacion de un usuario
         public static void CrearUsuario(string Nombre, string Apellido, string NombreUsuario, string Contraseña, string Mail)
         {
-            // Generacion de string de conexion y consulta
-            string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True; TrustServerCertificate=True";
-            var query = "INSERT INTO Usuario (Nombre, Apellido, NombreUsuario, \"Contrase a\", Mail) VALUES (@Nombre, @Apellido, @NombreUsuario, @Contraseña, @Mail)";
+            // Generacion de consulta
+            var query = "INSERT INTO Usuario (Nombre, Apellido, NombreUsuario, Contraseña, Mail) VALUES (@Nombre, @Apellido, @NombreUsuario, @Contraseña, @Mail)";
 
             // Conexion a la BD
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlConnection conexion = new DB_Connection().NewConnection())
             {
                 conexion.Open();
                 // Generacion de consulta a BD
@@ -125,19 +120,17 @@ namespace SistemaGestionData
                     comando.Parameters.Add(new SqlParameter("Mail", SqlDbType.VarChar) { Value = Mail });
                     comando.ExecuteNonQuery();
                 }
-                conexion.Close();
             }
         }
 
         // Metodo para la modificacion de un usuario
         public static void ModificarUsuario(Usuario usuario)
         {
-            // Generacion de string de conexion y consulta
-            string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True; TrustServerCertificate=True";
-            var query = "UPDATE Usuario SET Nombre = @Nombre, Apellido = @Apellido, NombreUsuario = @NombreUsuario, \"Contrase a\" = @Contraseña, Mail = @Mail WHERE Id = @Id";
+            // Generacion de consulta
+            var query = "UPDATE Usuario SET Nombre = @Nombre, Apellido = @Apellido, NombreUsuario = @NombreUsuario, Contraseña = @Contraseña, Mail = @Mail WHERE Id = @Id";
 
             // Conexion a la BD
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlConnection conexion = new DB_Connection().NewConnection())
             {
                 conexion.Open();
                 // Generacion de consulta a BD
@@ -151,7 +144,6 @@ namespace SistemaGestionData
                     comando.Parameters.Add(new SqlParameter("Mail", SqlDbType.VarChar) { Value = usuario.Mail });
                     comando.ExecuteNonQuery();
                 }
-                conexion.Close();
             }
         }
 
@@ -159,11 +151,10 @@ namespace SistemaGestionData
         public static void EliminarUsuario(int Id)
         {
             // Generacion de string de conexion y consulta
-            string connectionString = "Server=.; DataBase=CoderHouse; Trusted_Connection=True; TrustServerCertificate=True";
             var query = "DELETE FROM Usuario WHERE Id = @Id";
 
             // Conexion a la BD
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlConnection conexion = new DB_Connection().NewConnection())
             {
                 conexion.Open();
                 // Generacion de consulta a BD
@@ -172,7 +163,6 @@ namespace SistemaGestionData
                     comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = Id });
                     comando.ExecuteNonQuery();
                 }
-                conexion.Close();
             }
         }
     }

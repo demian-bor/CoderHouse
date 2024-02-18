@@ -140,10 +140,7 @@ namespace SistemaGestionUI
             TablaDatos.Columns.Add("ID", "ID");
             TablaDatos.Columns.Add("Comentarios", "Comentarios");
             TablaDatos.Columns.Add("Id Usuario", "Id Usuario");
-            foreach (var item in lista)
-            {
-                TablaDatos.Rows.Add(item.Id, item.Comentarios, item.IdUsuario);
-            }
+            TablaDatos.Rows.Add(lista.Id, lista.Comentarios, lista.IdUsuario);
             TablaDatos.AutoResizeColumns();
         }
 

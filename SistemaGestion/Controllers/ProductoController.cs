@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using SistemaGestionBussiness;
 using SistemaGestionEntities;
+using System.Linq;
 
 namespace SistemaGestion.Controllers
 {
@@ -9,34 +11,13 @@ namespace SistemaGestion.Controllers
     [Route("api/[controller]")]
     public class ProductoController : Controller
     {
-        [HttpGet("listado")]
-        public IEnumerable<Producto> GetAll()
-        {
-            return ProductoBussiness.GetProductos();
-        }
-
-        [HttpGet("ver/{id}")]
-        public ActionResult<Producto> GetById(int id)
-        {
-            try
-            {
-                return ProductoBussiness.GetProducto(id).FirstOrDefault();
-            }
-            catch
-            {
-                return BadRequest("Id de producto inexistente");
-            }
-        }
-
-        [HttpGet("crear")]
+        // Crear un producto
+        [HttpPost()]
         public ActionResult<String> Create(string Descripcion, double Costo, double PrecioVenta, int Stock, int IdUsuario)
         {
-            // Verificar que exista el usuario
-            try
-            {
-                UsuarioBussiness.GetUsuario(IdUsuario);
-            }
-            catch
+            // Corroborar existencia de usuario
+            var users = UsuarioBussiness.GetUsuario(IdUsuario);
+            if (users.Id == 0)
             {
                 return BadRequest("Id de usuario inexistente");
             }
@@ -53,26 +34,20 @@ namespace SistemaGestion.Controllers
             }
         }
 
-        // api/editar?id=&nombre= etc
-        [HttpGet("editar")]
+        // Modificar un producto
+        [HttpPut()]
         public ActionResult<String> Edit(int Id, string Descripcion, double Costo, double PrecioVenta, int Stock, int IdUsuario)
         {
             // Verificar la existencia del producto
-            try
-            {
-                ProductoBussiness.GetProducto(Id);
-            }
-            catch
+            var prods = ProductoBussiness.GetProducto(Id);
+            if (prods.Id == 0)
             {
                 return BadRequest("Id de producto inexistente");
             }
 
-            // Verificar la existencia del usuario
-            try
-            {
-                UsuarioBussiness.GetUsuario(IdUsuario);
-            }
-            catch
+            // Corroborar existencia de usuario
+            var users = UsuarioBussiness.GetUsuario(IdUsuario);
+            if (users.Id == 0)
             {
                 return BadRequest("Id de usuario inexistente");
             }
@@ -92,15 +67,13 @@ namespace SistemaGestion.Controllers
             }
         }
 
-        [HttpGet("eliminar/{Id}")]
-        public ActionResult<String> Remove(int Id)
+        // Eliminar un producto
+        [HttpDelete("{idProducto}")]
+        public ActionResult<String> Remove(int idProducto)
         {
             // Verificar la existencia del producto
-            try
-            {
-                ProductoBussiness.GetProducto(Id);
-            }
-            catch
+            var prods = ProductoBussiness.GetProducto(idProducto);
+            if (prods.Id == 0)
             {
                 return BadRequest("Id de producto inexistente");
             }
@@ -108,14 +81,58 @@ namespace SistemaGestion.Controllers
             // Realizar eliminacion
             try
             {
-                ProductoBussiness.RemoveProducto(Id);
+                ProductoBussiness.RemoveProducto(idProducto);
                 return Ok();
             }
             catch
             {
                 return BadRequest("Ocurrio un error");
             }
-
         }
+
+        // Traer productos de un usuario
+        [HttpGet("{idUsuario}")]
+        public ActionResult<IEnumerable<Producto>> GetByUser(int idUsuario)
+        {
+            // Corroborar existencia de usuario
+            var users = UsuarioBussiness.GetUsuario(idUsuario);
+            if (users.Id == 0 )
+            {
+                return BadRequest("Id de usuario inexistente");
+            }
+
+            // Buscar productos asociados y devolver
+            var prods = ProductoBussiness.GetProductos().Where(Item => Item.IdUsuario == idUsuario);
+            if (prods.Count() > 0 && prods.First().Id != 0)
+            {
+                return Ok(prods);
+            }
+            else
+            {
+                return NotFound("No se encontraron productos asociados al usuario");
+            }
+        }
+
+        // No se solicita traer todos los productos
+        //[HttpGet()]
+        //public IEnumerable<Producto> GetAll()
+        //{
+        //    return ProductoBussiness.GetProductos();
+        //}
+
+        // No se solicita traer un producto por su id de producto
+        //[HttpGet("{id}")]
+        //public ActionResult<Producto> GetById(int id)
+        //{
+        //    try
+        //    {
+        //        return ProductoBussiness.GetProducto(id);
+        //    }
+        //    catch
+        //    {
+        //        return BadRequest("Id de producto inexistente");
+        //    }
+        //}
+
     }
 }

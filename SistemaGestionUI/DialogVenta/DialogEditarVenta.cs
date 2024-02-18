@@ -49,11 +49,11 @@ namespace SistemaGestionUI.DialogVenta
             IDUsuario.Maximum = lista.LastOrDefault().Id;
 
             // Obtener el listado de usuarios
-            List<Venta> EditVenta = VentaBussiness.GetVenta(VentasForm.ID_Venta_Busqueda);
+            Venta EditVenta = VentaBussiness.GetVenta(VentasForm.ID_Venta_Busqueda);
 
             // Completar los campos de edicion
-            Descripcion.Text = EditVenta.FirstOrDefault().Comentarios.ToString();
-            IDUsuario.Value = EditVenta.FirstOrDefault().IdUsuario;
+            Descripcion.Text = EditVenta.Comentarios.ToString();
+            IDUsuario.Value = EditVenta.IdUsuario;
         }
     }
 }

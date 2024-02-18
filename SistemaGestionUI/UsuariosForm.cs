@@ -80,10 +80,7 @@ namespace SistemaGestionUI
             TablaDatos.Columns.Add("Usuario", "Usuario");
             TablaDatos.Columns.Add("Contraseña", "Contraseña");
             TablaDatos.Columns.Add("Correo", "Correo");
-            foreach (var item in lista)
-            {
-                TablaDatos.Rows.Add(item.Id, item.Nombre, item.Apellido, item.NombreUsuario, item.Contraseña, item.Mail);
-            }
+            TablaDatos.Rows.Add(lista.Id, lista.Nombre, lista.Apellido, lista.NombreUsuario, lista.Contraseña, lista.Mail);
             TablaDatos.AutoResizeColumns();
         }
 
