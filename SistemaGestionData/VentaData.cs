@@ -106,6 +106,7 @@ namespace SistemaGestionData
                 {
                     comando.Parameters.Add(new SqlParameter("Comentarios", SqlDbType.VarChar) { Value = Comentarios });
                     comando.Parameters.Add(new SqlParameter("IdUsuario", SqlDbType.Int) { Value = IdUsuario });
+                    comando.ExecuteNonQuery();
                 }
             }
         }
@@ -126,6 +127,7 @@ namespace SistemaGestionData
                     comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = venta.Id });
                     comando.Parameters.Add(new SqlParameter("Comentarios", SqlDbType.VarChar) { Value = venta.Comentarios });
                     comando.Parameters.Add(new SqlParameter("IdUsuario", SqlDbType.Int) { Value = venta.IdUsuario });
+                    comando.ExecuteNonQuery();
                 }
             }
         }
@@ -144,6 +146,7 @@ namespace SistemaGestionData
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
                     comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = Id });
+                    comando.ExecuteNonQuery();
                 }
             }
         }

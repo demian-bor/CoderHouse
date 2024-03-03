@@ -13,10 +13,10 @@ namespace SistemaGestion.Controllers
     {
         // Crear un producto
         [HttpPost()]
-        public ActionResult<String> Create(string Descripcion, double Costo, double PrecioVenta, int Stock, int IdUsuario)
+        public ActionResult Create(Producto NewProduct)
         {
             // Corroborar existencia de usuario
-            var users = UsuarioBussiness.GetUsuario(IdUsuario);
+            var users = UsuarioBussiness.GetUsuario(NewProduct.IdUsuario);
             if (users.Id == 0)
             {
                 return BadRequest("Id de usuario inexistente");
@@ -25,7 +25,7 @@ namespace SistemaGestion.Controllers
             // Crear el nuevo producto
             try
             {
-                ProductoBussiness.NewProducto(Descripcion, Costo, PrecioVenta, Stock, IdUsuario);
+                ProductoBussiness.NewProducto(NewProduct.Descripcion, NewProduct.Costo, NewProduct.PrecioVenta, NewProduct.Stock, NewProduct.IdUsuario);
                 return Ok();
             }
             catch
@@ -36,24 +36,24 @@ namespace SistemaGestion.Controllers
 
         // Modificar un producto
         [HttpPut()]
-        public ActionResult<String> Edit(int Id, string Descripcion, double Costo, double PrecioVenta, int Stock, int IdUsuario)
+        public ActionResult Edit(Producto EditedProd)
         {
             // Verificar la existencia del producto
-            var prods = ProductoBussiness.GetProducto(Id);
+            var prods = ProductoBussiness.GetProducto(EditedProd.Id);
             if (prods.Id == 0)
             {
                 return BadRequest("Id de producto inexistente");
             }
 
             // Corroborar existencia de usuario
-            var users = UsuarioBussiness.GetUsuario(IdUsuario);
+            var users = UsuarioBussiness.GetUsuario(EditedProd.IdUsuario);
             if (users.Id == 0)
             {
                 return BadRequest("Id de usuario inexistente");
             }
 
             // Generar el usuario editado
-            Producto EditedProduct = new Producto(Id, Descripcion, Costo, PrecioVenta, Stock, IdUsuario);
+            Producto EditedProduct = new Producto(EditedProd.Id, EditedProd.Descripcion, EditedProd.Costo, EditedProd.PrecioVenta, EditedProd.Stock, EditedProd.IdUsuario);
 
             // Realizar edicion
             try
@@ -69,7 +69,7 @@ namespace SistemaGestion.Controllers
 
         // Eliminar un producto
         [HttpDelete("{idProducto}")]
-        public ActionResult<String> Remove(int idProducto)
+        public ActionResult Remove(int idProducto)
         {
             // Verificar la existencia del producto
             var prods = ProductoBussiness.GetProducto(idProducto);
@@ -78,9 +78,16 @@ namespace SistemaGestion.Controllers
                 return BadRequest("Id de producto inexistente");
             }
 
+            // Obtener todos los productos vedidos relacionados
+            IEnumerable<ProductoVendido> Prod_Vendidos = ProductoVendidoBussiness.GetProductosVendidos().Where(Item => Item.IdProducto == idProducto);
+
             // Realizar eliminacion
             try
             {
+                foreach (ProductoVendido pvendido in Prod_Vendidos)
+                {
+                    ProductoVendidoBussiness.RemoveProductoVendido(pvendido.Id);
+                }
                 ProductoBussiness.RemoveProducto(idProducto);
                 return Ok();
             }
@@ -92,6 +99,7 @@ namespace SistemaGestion.Controllers
 
         // Traer productos de un usuario
         [HttpGet("{idUsuario}")]
+        // public ActionResult<IEnumerable<Producto>> GetByUser(int idUsuario)
         public ActionResult<IEnumerable<Producto>> GetByUser(int idUsuario)
         {
             // Corroborar existencia de usuario
@@ -102,7 +110,7 @@ namespace SistemaGestion.Controllers
             }
 
             // Buscar productos asociados y devolver
-            var prods = ProductoBussiness.GetProductos().Where(Item => Item.IdUsuario == idUsuario);
+            IEnumerable<Producto> prods = ProductoBussiness.GetProductos().Where(Item => Item.IdUsuario == idUsuario);
             if (prods.Count() > 0 && prods.First().Id != 0)
             {
                 return Ok(prods);

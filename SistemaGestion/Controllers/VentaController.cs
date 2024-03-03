@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using SistemaGestionBussiness;
 using SistemaGestionEntities;
 
@@ -33,25 +34,43 @@ namespace SistemaGestion.Controllers
 
         // Crear una venta
         [HttpPost("{idUsuario}")]
-        public ActionResult<String> Create(string Comentarios, int idUsuario)
+        public ActionResult Create(List<Producto> NewVentas)
         {
             // Corroborar existencia de usuario
-            var users = UsuarioBussiness.GetUsuario(idUsuario);
+            var users = UsuarioBussiness.GetUsuario(NewVentas[0].IdUsuario);
             if (users.Id == 0)
             {
                 return BadRequest("Id de usuario inexistente");
             }
 
-            // Generar venta
+            // Cargar venta
+            int VentaId;
             try
             {
-                VentaBussiness.NewVenta(Comentarios, idUsuario);
-                return Ok();
+                VentaBussiness.NewVenta("Nueva venta", NewVentas[0].IdUsuario);
+                VentaId = VentaBussiness.GetVentas().Last().Id;
             }
             catch
             {
-                return BadRequest("Ocurrio un error");
+                return BadRequest("Ocurrio un error cargando Venta");
             }
+
+            // Cargar productos vendidos
+            foreach (Producto item in NewVentas)
+            {
+                // Generar venta
+                try
+                {
+                    ProductoVendidoBussiness.NewProductoVendido(item.Id, item.Stock, VentaId);
+                    return Ok();
+                }
+                catch
+                {
+                    return BadRequest("Ocurrio un error cargando Producto Vendido");
+                }
+            }
+            return BadRequest("Ocurrio un error");
+
         }
 
 

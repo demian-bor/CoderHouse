@@ -109,6 +109,7 @@ namespace SistemaGestionData
                     comando.Parameters.Add(new SqlParameter("IdProducto", SqlDbType.Int) { Value = IdProducto });
                     comando.Parameters.Add(new SqlParameter("Stock", SqlDbType.Int) { Value = Stock });
                     comando.Parameters.Add(new SqlParameter("IdVenta", SqlDbType.Int) { Value = IdVenta });
+                    comando.ExecuteNonQuery();
                 }
             }
         }
@@ -130,6 +131,7 @@ namespace SistemaGestionData
                     comando.Parameters.Add(new SqlParameter("IdProducto", SqlDbType.Int) { Value = EditedProductoVendido.IdProducto });
                     comando.Parameters.Add(new SqlParameter("Stock", SqlDbType.Int) { Value = EditedProductoVendido.Stock });
                     comando.Parameters.Add(new SqlParameter("IdVenta", SqlDbType.Int) { Value = EditedProductoVendido.IdVenta });
+                    comando.ExecuteNonQuery();
                 }
             }
         }
@@ -148,6 +150,7 @@ namespace SistemaGestionData
                 using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
                     comando.Parameters.Add(new SqlParameter("Id", SqlDbType.Int) { Value = Id });
+                    comando.ExecuteNonQuery();
                 }
             }
         }

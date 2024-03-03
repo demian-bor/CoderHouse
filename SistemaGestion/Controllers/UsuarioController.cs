@@ -23,7 +23,7 @@ namespace SistemaGestion.Controllers
             {
                 if (users.FirstOrDefault().Contraseña == contraseña)
                 {
-                    return Ok(users);
+                    return Ok((Usuario)users.FirstOrDefault());
                 }
                 else
                 {
@@ -53,17 +53,17 @@ namespace SistemaGestion.Controllers
 
         // Modificar un usuario
         [HttpPut()]
-        public ActionResult<String> Edit(int Id, string Nombre, string Apellido, string NombreUsuario, string Contraseña, string Mail)
+        public ActionResult Edit(Usuario Edited)
         {
             // Corroborar existencia de usuario
-            var users = UsuarioBussiness.GetUsuario(Id);
+            var users = UsuarioBussiness.GetUsuario(Edited.Id);
             if (users.Id == 0)
             {
                 return BadRequest("Id de usuario inexistente");
             }
 
             // Generar el usuario editado
-            Usuario EditedUser = new Usuario(Id, Nombre, Apellido, NombreUsuario, Contraseña, Mail);
+            Usuario EditedUser = new Usuario(Edited.Id, Edited.Nombre, Edited.Apellido, Edited.NombreUsuario, Edited.Contraseña, Edited.Mail);
 
             // Realizar edicion
             try
